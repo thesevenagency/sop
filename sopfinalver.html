@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.agency - Standard Operating Procedures</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>7️⃣</text></svg>">
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Using Tailwind CDN for simplicity and immediate functionality. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .section-title {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .accordion-header {
+            cursor: pointer;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .nav-link.active {
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        .page {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Accessibility: Skip to content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:bg-white focus:p-3 focus:rounded-md focus:shadow-lg">Skip to main content</a>
+
+    <!-- Mobile overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-25 z-30 hidden"></div>
+
+    <!-- Header and Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <!-- Logo Image -->
+                    <img src="https://placehold.co/40x40/6366f1/ffffff?text=7A" alt="7.agency Logo" class="h-8 w-8 mr-3 rounded-md">
+                    <span class="font-bold text-xl text-slate-800" data-lang-key="nav.title">7.agency SOP</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-1">
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition duration-150 ease-in-out" data-page="home" data-lang-key="nav.home">Home</a>
+                        <a href="#core-principles" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition duration-150 ease-in-out" data-page="core-principles" data-lang-key="nav.corePrinciples">Core Principles</a>
+                        <a href="#vendor-portal" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition duration-150 ease-in-out" data-page="vendor-portal" data-lang-key="nav.vendorPortal">Vendor Portal</a>
+                        <a href="#login" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition duration-150 ease-in-out" data-page="login" data-lang-key="nav.teamHub">Team Hub</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="lang-switcher" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-semibold py-2 px-4 rounded-md text-sm transition duration-150 ease-in-out flex items-center">
+                        <!-- Language Flag Icons -->
+                        <img id="flag-en" src="https://placehold.co/20x15/f0f0f0/000?text=EN" alt="English Flag" class="h-4 w-auto mr-2 rounded-sm">
+                        <img id="flag-id" src="https://placehold.co/20x15/f0f0f0/000?text=ID" alt="Indonesian Flag" class="h-4 w-auto mr-2 rounded-sm hidden">
+                        <span id="lang-text" data-lang-key="nav.langToggle">English / Bahasa</span>
+                    </button>
+                    <div class="md:hidden ml-2">
+                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100" data-page="home" data-lang-key="nav.home">Home</a>
+                <a href="#core-principles" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100" data-page="core-principles" data-lang-key="nav.corePrinciples">Core Principles</a>
+                <a href="#vendor-portal" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100" data-page="vendor-portal" data-lang-key="nav.vendorPortal">Vendor Portal</a>
+                <a href="#login" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100" data-page="login" data-lang-key="nav.teamHub">Team Hub</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Pages will be injected here by JavaScript -->
+    </main>
+
+    <footer class="bg-white mt-12">
+        <div class="container mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            &copy; 2025 7.agency. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Templates for pages -->
+    <template id="template-home">
+        <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+            <!-- Home Page Banner -->
+            <img src="https://placehold.co/1200x300/e0e7ff/4f46e5?text=Welcome+to+Our+SOP+Portal" alt="SOP Portal Welcome Banner" class="w-full h-48 object-cover mb-6 rounded-lg">
+            <h1 class="text-3xl font-bold text-slate-800 mb-4" data-lang-key="home.title">Welcome to the 7.agency SOP Portal</h1>
+            <p class="mb-4" data-lang-key="home.p1">This portal provides access to our Standard Operating Procedures (SOPs) for all internal team members and external vendor partners. Our goal is to ensure consistency, quality, and professionalism across all events.</p>
+            <p data-lang-key="home.p2">Please use the navigation above to find the section relevant to you. The Core Principles apply to everyone.</p>
+        </div>
+    </template>
+
+    <template id="template-core-principles">
+        <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+            <h1 class="text-3xl font-bold text-slate-800 mb-2" data-lang-key="part1.title">Part 1: The Core Principles Handbook</h1>
+            <p class="text-sm text-slate-500 mb-6" data-lang-key="part1.version">Version 1.0 | Last Updated: 1 July 2025</p>
+            
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section1.title">1. The Client Promise: Our Guiding Star</h2>
+                    <p data-lang-key="part1.section1.p1">Everything we do is centered around creating a perfect, seamless, and unforgettable wedding day for our clients. The Project Manager (PM) is the lead coordinator, responsible for every detail and for solving any issue that may arise. Our collective goal is to work together as a single, coordinated team to flawlessly execute the client's vision.</p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section2.title">2. Universal Code of Conduct</h2>
+                    <p class="mb-4" data-lang-key="part1.section2.p1">These principles are the minimum standard of behavior and presentation expected from every individual on-site.</p>
+                    <div class="space-y-4 ml-4">
+                        <div>
+                            <h3 class="font-semibold text-lg" data-lang-key="part1.section2.a.title">a. Professional Appearance & Hygiene</h3>
+                            <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li data-lang-key="part1.section2.a.li1"><strong>Be Presentable:</strong> Arrive in a clean, ironed, and appropriate uniform or attire as specified for the event. Personal hygiene is essential; you must be well-groomed and smell fresh.</li>
+                                <li data-lang-key="part1.section2.a.li2"><strong>Appropriate Attire:</strong> Unless a specific uniform is required, clothing should be professional and conservative. Ripped jeans, shorts, and casual T-shirts with large prints are not permitted.</li>
+                                <li data-lang-key="part1.section2.a.li3"><strong>Footwear:</strong> Shoes must be clean and in good condition. Closed-toe shoes are required for most roles unless otherwise specified for beach events.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg" data-lang-key="part1.section2.b.title">b. Positive & Professional Attitude</h3>
+                             <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li data-lang-key="part1.section2.b.li1"><strong>Be Client-Focused:</strong> Your primary focus is the client's experience. Be friendly, positive, and always willing to help.</li>
+                                <li data-lang-key="part1.section2.b.li2"><strong>Be Solution-Oriented:</strong> If a challenge arises, focus on finding a solution. If you cannot solve it yourself, you must immediately report it to the on-site Project Manager.</li>
+                                <li data-lang-key="part1.section2.b.li3"><strong>Be a Team Player:</strong> We succeed as a team. Be proactive and offer help to colleagues when you see a need. An "it's not my job" attitude is not acceptable.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg" data-lang-key="part1.section2.c.title">c. On-Site Behavior & Etiquette</h3>
+                             <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li data-lang-key="part1.section2.c.li1"><strong>Respect the Venue:</strong> Keep the event space, both front-of-house and back-of-house, clean and tidy. All personal items and equipment should be stored discreetly and out of sight of the clients and their guests.</li>
+                                <li data-lang-key="part1.section2.c.li2"><strong>Respect Client Privacy:</strong> An event is a private, intimate occasion. Do not allow strangers to enter the event space. Politely ask onlookers to keep their distance.</li>
+                                <li data-lang-key="part1.section2.c.li3"><strong>Discreet Conduct:</strong> Do not eat, smoke, or take personal phone calls in any area visible to clients or guests. Use designated staff areas only. Keep conversations with colleagues professional and at a low volume.</li>
+                                <li data-lang-key="part1.section2.c.li4"><strong>Punctuality:</strong> Arrive at the time specified in the rundown. Late arrivals are not acceptable.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section3.title">3. Handling On-Site Challenges</h2>
+                    <p class="mb-2" data-lang-key="part1.section3.p1">Non-standard situations can occur. When they do, we respond with calm professionalism.</p>
+                    <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                        <li data-lang-key="part1.section3.li1"><strong>Your First Responsibility:</strong> Your primary contact for any problem, question, or deviation from the plan is the <strong>Project Manager (PM)</strong>.</li>
+                        <li data-lang-key="part1.section3.li2"><strong>Communicate Immediately:</strong> Do not wait for a problem to escalate. Inform the PM as soon as you become aware of an issue, no matter how small it seems. This allows the leadership team to solve it effectively.</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section4.title">4. Our Commitment to Quality</h2>
+                    <p class="mb-2" data-lang-key="part1.section4.p1">These principles are the foundation of our reputation. They are not optional.</p>
+                    <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                        <li data-lang-key="part1.section4.li1"><strong>Accountability:</strong> Every team member and vendor partner is held accountable for upholding these standards.</li>
+                        <li data-lang-key="part1.section4.li2"><strong>Consequences:</strong> Failure to adhere to this Code of Conduct will be addressed by the Project Manager and may result in penalties, including removal from the event and exclusion from future projects.</li>
+                    </ul>
+                </div>
+                <p class="font-semibold text-center pt-4" data-lang-key="part1.thankYou">Thank you for your professionalism and your commitment to making every event a perfect experience.</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-vendor-portal">
+        <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+            <h1 class="text-3xl font-bold text-slate-800 mb-2" data-lang-key="part3.title">Part 3: The 7.agency Vendor Partnership Guide</h1>
+            <p class="text-sm text-slate-500 mb-6" data-lang-key="part3.version">Version 1.3 | Last Updated: 1 July 2025</p>
+            
+            <p class="mb-6" data-lang-key="part3.intro">Welcome, and thank you for partnering with 7.agency. We consider our vendors to be an essential part of our team, crucial to creating the perfect, seamless, and unforgettable events our clients expect. This guide outlines our quality standards and on-site procedures. Your adherence to these guidelines ensures a smooth collaboration and a flawless event for our mutual client.</p>
+
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionA.title">Section A: Universal Standards of Partnership</h2>
+                    <p class="mb-4" data-lang-key="part3.sectionA.p1">These core principles are the foundation of our work and are mandatory for every person on-site.</p>
+                    <ul class="list-decimal list-outside ml-5 space-y-2">
+                        <li data-lang-key="part3.sectionA.li1"><strong>The Client-First Principle:</strong> Our collective goal is to execute the client's vision perfectly. We work as one unified team, led by the 7.agency Project Manager (PM), who is the final authority on-site.</li>
+                        <li data-lang-key="part3.sectionA.li2"><strong>Professional Appearance:</strong> All team members must arrive in a clean, ironed, and appropriate uniform or attire. If you do not have a company uniform, plain black shirts and black trousers/skirts are required. All clothing must be presentable, and footwear must be clean and closed-toe (unless specified otherwise for beach events).</li>
+                        <li data-lang-key="part3.sectionA.li3"><strong>Professional Attitude:</strong> We expect a positive, friendly, and solution-oriented attitude at all times. Be proactive, helpful, and focused on delivering the highest quality service.</li>
+                        <li data-lang-key="part3.sectionA.li4"><strong>On-Site Etiquette:</strong>
+                            <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li data-lang-key="part3.sectionA.li4_1"><strong>Punctuality:</strong> Arrive at the time specified in the rundown. Late arrivals are not acceptable.</li>
+                                <li data-lang-key="part3.sectionA.li4_2"><strong>Discretion:</strong> All equipment and personal items must be kept out of sight of clients. Do not eat, smoke, or take personal calls in guest areas. Use designated staff areas only.</li>
+                                <li data-lang-key="part3.sectionA.li4_3"><strong>Communication:</strong> Your primary point of contact on-site is the assigned 7.agency Project Manager (PM) or Area Manager (AM). Report any issues or questions to them immediately. Do not promise changes or extras to the client directly.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionB.title">Section B: Service-Specific Quality Standards</h2>
+                    <p class="mb-4" data-lang-key="part3.sectionB.p1">Please find the detailed requirements for your specific service area below.</p>
+                    <div class="space-y-2" id="accordion-container">
+                        <!-- Accordion items will be injected here -->
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionC.title">Section C: Booking & Payment</h2>
+                    <ul class="list-disc list-outside ml-5 space-y-2">
+                        <li data-lang-key="part3.sectionC.li1"><strong>Booking:</strong> All official bookings and changes will be communicated in writing from our `7agency.bookings@gmail.com` email address.</li>
+                        <li data-lang-key="part3.sectionC.li2"><strong>Payment:</strong> All payments are processed via invoice. After the event, please submit an invoice for your services. Our Finance Manager will process the payment, which will be issued on the next business day after the event or upon receipt of the invoice.</li>
+                        <li data-lang-key="part3.sectionC.li3"><strong>ID Cards:</strong> Please ensure all your on-site staff bring their ID cards for venue security access.</li>
+                    </ul>
+                </div>
+                 <p class="font-semibold text-center pt-4" data-lang-key="part3.thankYou">We look forward to a successful partnership and creating another beautiful event together.</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-login">
+        <div class="page max-w-md mx-auto">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold text-center text-slate-800 mb-6" data-lang-key="login.title">Team Hub Login</h1>
+                <form id="login-form">
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-slate-700" data-lang-key="login.passwordLabel">Password</label>
+                        <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <p id="login-error" class="text-red-500 text-sm mb-4 hidden" data-lang-key="login.error">Invalid password. Please try again.</p>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out" data-lang-key="login.button">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-team-hub">
+         <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+            <h1 class="text-3xl font-bold text-slate-800 mb-6" data-lang-key="teamHub.title">Internal Team Hub</h1>
+            
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
+                    <span data-lang-key="teamHub.pm.title">SOP: Project Managers</span>
+                </h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed" data-lang-key="teamHub.pm.content">
+                    <!-- PM SOP content will be inserted here from translations object -->
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.96 14.96 0 00-5.84-2.56m0 0a14.956 14.956 0 01-5.84-2.56m5.84 2.56v4.82" /></svg>
+                    <span data-lang-key="teamHub.sales.title">SOP: Sales Managers</span>
+                </h2>
+                <div class="p-6 bg-slate-50 rounded-md text-center" data-lang-key="teamHub.sales.content">
+                    <!-- Placeholder content -->
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
+                    <span data-lang-key="teamHub.finance.title">SOP: Finance</span>
+                </h2>
+                <div class="p-6 bg-slate-50 rounded-md text-center" data-lang-key="teamHub.finance.content">
+                    <!-- Placeholder content -->
+                </div>
+            </div>
+
+        </div>
+    </template>
+
+
+<script>
+// --- TRANSLATION DATA ---
+const translations = {
+    en: {
+        nav: {
+            title: "7.agency SOP",
+            home: "Home",
+            corePrinciples: "Core Principles",
+            vendorPortal: "Vendor Portal",
+            teamHub: "Team Hub",
+            langToggle: "English / Bahasa"
+        },
+        home: {
+            title: "Welcome to the 7.agency SOP Portal",
+            p1: "This portal provides access to our Standard Operating Procedures (SOPs) for all internal team members and external vendor partners. Our goal is to ensure consistency, quality, and professionalism across all events.",
+            p2: "Please use the navigation above to find the section relevant to you. The Core Principles apply to everyone.",
+        },
+        part1: { // Core Principles
+            title: "Part 1: The Core Principles Handbook",
+            version: "Version 1.0 | Last Updated: 1 July 2025",
+            section1: {
+                title: "1. The Client Promise: Our Guiding Star",
+                p1: "Everything we do is centered around creating a perfect, seamless, and unforgettable wedding day for our clients. The Project Manager (PM) is the lead coordinator, responsible for every detail and for solving any issue that may arise. Our collective goal is to work together as a single, coordinated team to flawlessly execute the client's vision."
+            },
+            section2: {
+                title: "2. Universal Code of Conduct",
+                p1: "These principles are the minimum standard of behavior and presentation expected from every individual on-site.",
+                a: {
+                    title: "a. Professional Appearance & Hygiene",
+                    li1: "<strong>Be Presentable:</strong> Arrive in a clean, ironed, and appropriate uniform or attire as specified for the event. Personal hygiene is essential; you must be well-groomed and smell fresh.",
+                    li2: "<strong>Appropriate Attire:</strong> Unless a specific uniform is required, clothing should be professional and conservative. Ripped jeans, shorts, and casual T-shirts with large prints are not permitted.",
+                    li3: "<strong>Footwear:</strong> Shoes must be clean and in good condition. Closed-toe shoes are required for most roles unless otherwise specified for beach events."
+                },
+                b: {
+                    title: "b. Positive & Professional Attitude",
+                    li1: "<strong>Be Client-Focused:</strong> Your primary focus is the client's experience. Be friendly, positive, and always willing to help.",
+                    li2: "<strong>Be Solution-Oriented:</strong> If a challenge arises, focus on finding a solution. If you cannot solve it yourself, you must immediately report it to the on-site Project Manager.",
+                    li3: "<strong>Be a Team Player:</strong> We succeed as a team. Be proactive and offer help to colleagues when you see a need. An \"it's not my job\" attitude is not acceptable."
+                },
+                c: {
+                    title: "c. On-Site Behavior & Etiquette",
+                    li1: "<strong>Respect the Venue:</strong> Keep the event space, both front-of-house and back-of-house, clean and tidy. All personal items and equipment should be stored discreetly and out of sight of the clients and their guests.",
+                    li2: "<strong>Respect Client Privacy:</strong> An event is a private, intimate occasion. Do not allow strangers to enter the event space. Politely ask onlookers to keep their distance.",
+                    li3: "<strong>Discreet Conduct:</strong> Do not eat, smoke, or take personal phone calls in any area visible to clients or guests. Use designated staff areas only. Keep conversations with colleagues professional and at a low volume.",
+                    li4: "<strong>Punctuality:</strong> Arrive at the time specified in the rundown. Late arrivals are not acceptable."
+                }
+            },
+            section3: {
+                title: "3. Handling On-Site Challenges",
+                p1: "Non-standard situations can occur. When they do, we respond with calm professionalism.",
+                li1: "<strong>Your First Responsibility:</strong> Your primary contact for any problem, question, or deviation from the plan is the <strong>Project Manager (PM)</strong>.",
+                li2: "<strong>Communicate Immediately:</strong> Do not wait for a problem to escalate. Inform the PM as soon as you become aware of an issue, no matter how small it seems. This allows the leadership team to solve it effectively."
+            },
+            section4: {
+                title: "4. Our Commitment to Quality",
+                p1: "These principles are the foundation of our reputation. They are not optional.",
+                li1: "<strong>Accountability:</strong> Every team member and vendor partner is held accountable for upholding these standards.",
+                li2: "<strong>Consequences:</strong> Failure to adhere to this Code of Conduct will be addressed by the Project Manager and may result in penalties, including removal from the event and exclusion from future projects."
+            },
+            thankYou: "Thank you for your professionalism and your commitment to making every event a perfect experience."
+        },
+        part3: { // Vendor Portal
+            title: "Part 3: The 7.agency Vendor Partnership Guide",
+            version: "Version 1.3 | Last Updated: 1 July 2025",
+            intro: "Welcome, and thank you for partnering with 7.agency. We consider our vendors to be an essential part of our team, crucial to creating the perfect, seamless, and unforgettable events our clients expect. This guide outlines our quality standards and on-site procedures. Your adherence to these guidelines ensures a smooth collaboration and a flawless event for our mutual client.",
+            sectionA: {
+                title: "Section A: Universal Standards of Partnership",
+                p1: "These core principles are the foundation of our work and are mandatory for every person on-site.",
+                li1: "<strong>The Client-First Principle:</strong> Our collective goal is to execute the client's vision perfectly. We work as one unified team, led by the 7.agency Project Manager (PM), who is the final authority on-site.",
+                li2: "<strong>Professional Appearance:</strong> All team members must arrive in a clean, ironed, and appropriate uniform or attire. If you do not have a company uniform, plain black shirts and black trousers/skirts are required. All clothing must be presentable, and footwear must be clean and closed-toe (unless specified otherwise for beach events).",
+                li3: "<strong>Professional Attitude:</strong> We expect a positive, friendly, and solution-oriented attitude at all times. Be proactive, helpful, and focused on delivering the highest quality service.",
+                li4: "<strong>On-Site Etiquette:",
+                li4_1: "<strong>Punctuality:</strong> Arrive at the time specified in the rundown. Late arrivals are not acceptable.",
+                li4_2: "<strong>Discretion:</strong> All equipment and personal items must be kept out of sight of clients. Do not eat, smoke, or take personal calls in guest areas. Use designated staff areas only.",
+                li4_3: "<strong>Communication:</strong> Your primary point of contact on-site is the assigned 7.agency Project Manager (PM) or Area Manager (AM). Report any issues or questions to them immediately. Do not promise changes or extras to the client directly."
+            },
+            sectionB: {
+                title: "Section B: Service-Specific Quality Standards",
+                p1: "Please find the detailed requirements for your specific service area below.",
+                photo: {
+                    title: "B1. Photography",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival:</strong> Arrive at least 15 minutes before your scheduled start time.</li>
+                        <li><strong>Team:</strong> It is recommended you work with assistants, depending on the event size.</li>
+                        <li><strong>Client Direction:</strong> You must be able to direct the couple in English, manage the photoshoots, and follow the shot list and timeline provided by the PM.</li>
+                        <li><strong>Mandatory Shot List (Minimum):</strong>
+                            <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li><strong>Details:</strong> Bride's & Groom's attire and accessories, bouquets, boutonnieres, rings.</li>
+                                <li><strong>People:</strong> Bridal party, groomsmen, and family preparations and portraits.</li>
+                                <li><strong>Decor:</strong> Detailed shots of the ceremony and reception setup before guests arrive.</li>
+                                <li><strong>Moments:</strong> Ceremony procession, vows, ring exchange, kiss, flower shower, reception entrance, cake cutting, first dance, speeches.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Deliverables:</strong> All edited photos must be delivered to 7.agency within 2 weeks of the event date. The number of edited photos will be specified per your booking agreement.</li>
+                    </ul>`
+                },
+                video: {
+                    title: "B2. Videography",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival:</strong> Arrive at least 15 minutes before your scheduled start time.</li>
+                        <li><strong>Team:</strong> It is recommended you work with assistants, depending on the event size.</li>
+                        <li><strong>Client Direction:</strong> You must be able to direct the couple in English and manage the video sessions according to the rundown.</li>
+                        <li><strong>Mandatory Moments to Capture:</strong>
+                            <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li><strong>Details & Prep:</strong> Similar to photography, capture all key details and preparation moments.</li>
+                                <li><strong>Ceremony:</strong> The <em>entire</em> ceremony process, especially key moments like the walk down the aisle, vows, and flower shower.</li>
+                                <li><strong>Reception:</strong> The <em>entire</em> reception program, including entrances, speeches, cake cutting, and dancing.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Deliverables:</strong> The final edited video(s) (clip highlights, documentary movie as per booking) must be delivered to 7.agency within 4 weeks of the event date.</li>
+                    </ul>`
+                },
+                decor: {
+                    title: "B3. Florist, Decorations & Furniture",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival & Setup:</strong> All decor and floral arrangements for the ceremony and reception must be 100% complete at least 15 minutes before the event start time.</li>
+                        <li><strong>Quality & Accuracy:</strong>
+                            <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li>All floral arrangements must match the client's approved design and color theme exactly.</li>
+                                <li>All flowers must be fresh and in excellent condition.</li>
+                                <li>All furniture must be clean, in good repair, and match the order precisely.</li>
+                            </ul>
+                        </li>
+                        <li><strong>On-Site Presence:</strong> Your setup team should not be visible to the client or guests upon their arrival.</li>
+                    </ul>`
+                },
+                catering: {
+                    title: "B4. Catering & Bar",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival & Setup:</strong> All food, beverages, equipment, and staff must be ready and in position at least 15 minutes before service time.</li>
+                        <li><strong>Accuracy:</strong> The menu and beverage list must be exactly as specified in the booking order. Quantities must be sufficient for the duration of the service (e.g., a "6-hour free flow" must not run out of any item).</li>
+                        <li><strong>Staffing & Appearance:</strong> All waiters and bartenders must be in a clean, formal uniform with closed-toe black shoes. Staff must be well-groomed, professional, and attentive.</li>
+                        <li><strong>Hygiene:</strong> All equipment, glassware, and service areas must be impeccably clean. A tent for the back kitchen area must be provided.</li>
+                    </ul>`
+                },
+                 entertainment: {
+                    title: "B5. Entertainment (Musicians, Dancers, MCs, etc.)",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival & Setup:</strong> Arrive with enough time to be fully set up and ready at least 15 minutes before your performance time.</li>
+                        <li><strong>Performance:</strong> Performances must be "clean," energetic, and follow the agreed-upon setlist and timeline. The goal is to enhance the event's atmosphere positively.</li>
+                        <li><strong>Appearance:</strong> All performers must wear professional, clean, and appropriate attire for their act (e.g., formal wear for a band, traditional outfits for dancers).</li>
+                        <li><strong>Safety:</strong> For acts involving special effects (e.g., fireworks, fire dance), safety is your complete responsibility. Your team must be experienced and take all necessary precautions.</li>
+                    </ul>`
+                },
+                 makeup: {
+                    title: "B6. Make-up & Hair",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival:</strong> Arrive at the client's location at least 15 minutes before the scheduled start time.</li>
+                        <li><strong>Hygiene & Quality:</strong>
+                             <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
+                                <li>You must use high-quality, international make-up brands.</li>
+                                <li>All tools, especially brushes, must be thoroughly cleaned and sanitized before use. Hairbrushes must be free of hair from previous clients.</li>
+                                <li>You must wear a face mask while working on a client.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Accuracy:</strong> The final look must match the client's requested style from their consultation/form.</li>
+                    </ul>`
+                },
+                 transport: {
+                    title: "B7. Transportation",
+                    content: `<ul class="list-disc list-outside ml-5 space-y-2">
+                        <li><strong>Arrival:</strong> All vehicles and drivers must be ready at the designated pickup point at least 15 minutes before the scheduled departure time.</li>
+                        <li><strong>Vehicle Quality:</strong> All vehicles must be clean (inside and out), in excellent working condition, and match the type specified in the booking.</li>
+                        <li><strong>Driver Professionalism:</strong> Drivers must be well-dressed, professional, and courteous.</li>
+                        <li><strong>Guest Transfers:</strong> For large guest transfers, a Liaison Organizer (LO) must be provided to manage passenger lists and coordinate with the 7.agency PM.</li>
+                    </ul>`
+                },
+            },
+            sectionC: {
+                title: "Section C: Booking & Payment",
+                li1: "<strong>Booking:</strong> All official bookings and changes will be communicated in writing from our `7agency.bookings@gmail.com` email address.",
+                li2: "<strong>Payment:</strong> All payments are processed via invoice. After the event, please submit an invoice for your services. Our Finance Manager will process the payment, which will be issued on the next business day after the event or upon receipt of the invoice.",
+                li3: "<strong>ID Cards:</strong> Please ensure all your on-site staff bring their ID cards for venue security access."
+            },
+            thankYou: "We look forward to a successful partnership and creating another beautiful event together."
+        },
+        login: {
+            title: "Team Hub Login",
+            passwordLabel: "Password",
+            error: "Invalid password. Please try again.",
+            button: "Login"
+        },
+        teamHub: {
+            title: "Internal Team Hub",
+            pm: {
+                title: "SOP: Project Managers",
+                content: `
+                <p class="mb-6">This manual is the comprehensive guide to our internal operations. It details your roles, our standard procedures from booking to event completion, and our internal policies. Mastering this document is essential for the successful execution of every event and for your professional growth within the agency.</p>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-800">Section A: Team Roles & Responsibilities</h3>
+                        <div class="space-y-4 pl-4 border-l-2 border-slate-200">
+                            <div>
+                                <h4 class="font-semibold">1. Project Manager (PM)</h4>
+                                <p>The PM is the leader of the event. They are responsible for the entire project lifecycle and have ultimate authority on-site. Responsibilities include: overseeing the event, ensuring all vendor bookings are correct and confirmed, creating and managing the event rundown, leading the entire on-site team, serving as the primary problem-solver, and ensuring all quality standards are executed.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">2. Client Manager (CM) / Personal Wedding Butler</h4>
+                                <p>The CM is dedicated to the couple's personal experience. Responsibilities include: acting as the couple’s personal assistant, managing their schedule, briefing them on processionals, carrying the essential "CM Bag," and acting as the Area Manager for Photo and Video.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">3. Area Manager (AM)</h4>
+                                <p>For large events, specific team members are assigned as Area Managers to ensure focused control over key domains (e.g., Catering, Decorations). They supervise vendors in their area and report issues to the PM.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-800">Section B: The Event Lifecycle: From A to Z</h3>
+                        <div class="space-y-4 pl-4 border-l-2 border-slate-200">
+                            <div>
+                                <h4 class="font-semibold">Phase 1: Booking & Confirmation</h4>
+                                <p>The assigned PM must begin booking all vendors within 48 hours via the official booking email. Every booking requires written confirmation. The PM must diligently update the Wedding Coordination (WC) document with color codes: Green (Pre-booked) and Bright Green (Booking Confirmed). The PM reviews all client documents and handles any changes promptly, with a final re-confirmation of all vendors one month before the event.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phase 2: Pre-Event Planning & Coordination</h4>
+                                <p>This includes rundown creation (1 month prior for big weddings; post-client meeting for small), leading technical meetings and couple rehearsals for large events, and managing event layouts. If a client provides items, the PM must create an itemized list and use a signed receipt.</p>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold">Phase 3: On-Site Execution</h4>
+                                <p>This details the pre-event team briefing, ensuring the venue is clean and private (50-70m radius), and following the strict client arrival protocol: all setup must be 100% complete, the uniformed team lined up for a welcome, and background music playing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-800">Section C: Internal Policies & Professional Standards</h3>
+                        <div class="space-y-4 pl-4 border-l-2 border-slate-200">
+                            <div>
+                                <h4 class="font-semibold">1. Uniform & Appearance Policy</h4>
+                                <p>Specifies dress codes for big events (with reception) and small events (ceremony only), with different attire for setup vs. the main event. For big events, the PM will direct the uniform from 5 options (e.g., Black shirt & black pants). General rules on cleanliness, shoes, and minimal accessories apply to all.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">2. Vendor Management & Vetting</h4>
+                                <p>Outlines the two-track process: proposing new "Permanent" (approved) vendors to the Head Manager for vetting, and clarifies that the PM takes full personal responsibility for the quality, pricing, and SOP adherence of any "One-Time" vendors used for an event.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-800">Appendix A: Abbreviations</h3>
+                        <p class="pl-4"><strong>SOP:</strong> Standard Operating Procedure, <strong>PM:</strong> Project Manager, <strong>CM:</strong> Client Manager, <strong>AM:</strong> Area Manager, <strong>HM:</strong> Head Manager, <strong>DM:</strong> Development Manager, <strong>QM:</strong> Quality Control Manager, <strong>WC:</strong> Wedding Coordination (document/file), <strong>WR:</strong> Wedding Report (document/file)</p>
+                    </div>
+                </div>
+                `
+            },
+            sales: {
+                title: "SOP: Sales Managers",
+                content: `<div class="text-center"><img src="https://placehold.co/100x100/e2e8f0/94a3b8?text=Coming+Soon" alt="Coming Soon" class="h-16 w-auto mx-auto mb-4 opacity-50"><p class="italic text-slate-500">Content for the Sales Manager SOP will be added here in a future update. Please provide the finalized text to be inserted here.</p></div>`
+            },
+            finance: {
+                title: "SOP: Finance",
+                content: `<div class="text-center"><img src="https://placehold.co/100x100/e2e8f0/94a3b8?text=Coming+Soon" alt="Coming Soon" class="h-16 w-auto mx-auto mb-4 opacity-50"><p class="italic text-slate-500">Content for the Finance SOP will be added here in a future update. Please provide the finalized text to be inserted here.</p></div>`
+            }
+        }
+    },
+    id: { // BAHASA INDONESIA - Placeholder text
+        nav: {
+            title: "SOP 7.agency",
+            home: "Beranda",
+            corePrinciples: "Prinsip Inti",
+            vendorPortal: "Portal Vendor",
+            teamHub: "Pusat Tim",
+            langToggle: "English / Bahasa"
+        },
+        home: {
+            title: "Selamat Datang di Portal SOP 7.agency",
+            p1: "Portal ini menyediakan akses ke Prosedur Operasi Standar (SOP) kami untuk semua anggota tim internal dan mitra vendor eksternal. Tujuan kami adalah untuk memastikan konsistensi, kualitas, dan profesionalisme di semua acara.",
+            p2: "Silakan gunakan navigasi di atas untuk menemukan bagian yang relevan bagi Anda. Prinsip Inti berlaku untuk semua orang.",
+        },
+        part1: {
+            title: "Bagian 1: Buku Panduan Prinsip Inti",
+            version: "Versi 1.0 | Terakhir Diperbarui: 1 Juli 2025",
+            section1: {
+                title: "1. Janji kepada Klien: Bintang Pemandu Kami",
+                p1: "Semua yang kami lakukan berpusat pada penciptaan hari pernikahan yang sempurna, mulus, dan tak terlupakan bagi klien kami. Manajer Proyek (PM) adalah koordinator utama, yang bertanggung jawab atas setiap detail dan untuk menyelesaikan masalah apa pun yang mungkin timbul. Tujuan kolektif kami adalah bekerja sama sebagai satu tim yang terkoordinasi untuk melaksanakan visi klien dengan sempurna."
+            },
+            section2: {
+                title: "2. Kode Etik Universal",
+                p1: "Prinsip-prinsip ini adalah standar minimum perilaku dan presentasi yang diharapkan dari setiap individu di lokasi.",
+                a: {
+                    title: "a. Penampilan & Kebersihan Profesional",
+                    li1: "<strong>Jadilah Rapi:</strong> Tiba dengan seragam atau pakaian yang bersih, disetrika, dan sesuai seperti yang ditentukan untuk acara tersebut. Kebersihan pribadi sangat penting; Anda harus berpenampilan rapi dan wangi.",
+                    li2: "<strong>Pakaian yang Sesuai:</strong> Kecuali jika seragam khusus diperlukan, pakaian harus profesional dan konservatif. Jeans sobek, celana pendek, dan kaos kasual dengan cetakan besar tidak diizinkan.",
+                    li3: "<strong>Alas Kaki:</strong> Sepatu harus bersih dan dalam kondisi baik. Sepatu tertutup diperlukan untuk sebagian besar peran kecuali ditentukan lain untuk acara di pantai."
+                },
+                b: {
+                    title: "b. Sikap Positif & Profesional",
+                    li1: "<strong>Berfokus pada Klien:</strong> Fokus utama Anda adalah pengalaman klien. Bersikaplah ramah, positif, dan selalu bersedia membantu.",
+                    li2: "<strong>Berorientasi pada Solusi:</strong> Jika tantangan muncul, fokuslah untuk menemukan solusi. Jika Anda tidak dapat menyelesaikannya sendiri, Anda harus segera melaporkannya kepada Manajer Proyek di lokasi.",
+                    li3: "<strong>Jadilah Pemain Tim:</strong> Kita berhasil sebagai sebuah tim. Bersikaplah proaktif dan tawarkan bantuan kepada rekan kerja saat Anda melihat ada kebutuhan. Sikap \"itu bukan pekerjaan saya\" tidak dapat diterima."
+                },
+                c: {
+                    title: "c. Perilaku & Etiket di Lokasi",
+                    li1: "<strong>Hormati Tempat Acara:</strong> Jaga kebersihan dan kerapian area acara, baik di depan maupun di belakang. Semua barang pribadi dan peralatan harus disimpan secara diam-diam dan tidak terlihat oleh klien dan tamu mereka.",
+                    li2: "<strong>Hormati Privasi Klien:</strong> Acara adalah acara pribadi dan intim. Jangan izinkan orang asing memasuki area acara. Minta dengan sopan kepada orang yang melihat untuk menjaga jarak.",
+                    li3: "<strong>Perilaku Bijaksana:</strong> Jangan makan, merokok, atau menerima telepon pribadi di area yang terlihat oleh klien atau tamu. Gunakan hanya area staf yang ditunjuk. Jaga percakapan dengan rekan kerja tetap profesional dan dengan volume rendah.",
+                    li4: "<strong>Tepat Waktu:</strong> Tiba pada waktu yang ditentukan dalam rundown. Keterlambatan tidak dapat diterima."
+                }
+            },
+            section3: {
+                title: "3. Menangani Tantangan di Lokasi",
+                p1: "Situasi non-standar dapat terjadi. Ketika itu terjadi, kami merespons dengan profesionalisme yang tenang.",
+                li1: "<strong>Tanggung Jawab Pertama Anda:</strong> Kontak utama Anda untuk setiap masalah, pertanyaan, atau penyimpangan dari rencana adalah <strong>Manajer Proyek (PM)</strong>.",
+                li2: "<strong>Berkomunikasi Segera:</strong> Jangan menunggu masalah menjadi lebih besar. Informasikan PM segera setelah Anda menyadari adanya masalah, sekecil apa pun kelihatannya. Ini memungkinkan tim pimpinan untuk menyelesaikannya secara efektif."
+            },
+            section4: {
+                title: "4. Komitmen Kami terhadap Kualitas",
+                p1: "Prinsip-prinsip ini adalah fondasi reputasi kami. Ini bukan opsional.",
+                li1: "<strong>Akuntabilitas:</strong> Setiap anggota tim dan mitra vendor bertanggung jawab untuk menegakkan standar ini.",
+                li2: "<strong>Konsekuensi:</strong> Kegagalan untuk mematuhi Kode Etik ini akan ditangani oleh Manajer Proyek dan dapat mengakibatkan hukuman, termasuk dikeluarkan dari acara dan dikecualikan dari proyek di masa depan."
+            },
+            thankYou: "Terima kasih atas profesionalisme dan komitmen Anda untuk membuat setiap acara menjadi pengalaman yang sempurna."
+        },
+        part3: {
+            title: "Bagian 3: Panduan Kemitraan Vendor 7.agency",
+            version: "Versi 1.3 | Terakhir Diperbarui: 1 Juli 2025",
+            intro: "Selamat datang, dan terima kasih telah bermitra dengan 7.agency. Kami menganggap vendor kami sebagai bagian penting dari tim kami, yang sangat penting untuk menciptakan acara yang sempurna, mulus, dan tak terlupakan yang diharapkan klien kami. Panduan ini menguraikan standar kualitas dan prosedur di lokasi kami. Kepatuhan Anda terhadap pedoman ini memastikan kolaborasi yang lancar dan acara yang sempurna bagi klien kita bersama.",
+            sectionA: {
+                title: "Bagian A: Standar Kemitraan Universal",
+                p1: "[Teks Bahasa Indonesia]",
+                li1: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li2: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li3: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li4: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li4_1: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li4_2: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li4_3: "<strong>[Teks Bahasa Indonesia]</strong>"
+            },
+            sectionB: {
+                title: "Bagian B: Standar Kualitas Spesifik Layanan",
+                p1: "[Teks Bahasa Indonesia]",
+                photo: { title: "B1. Fotografi", content: "[Konten Bahasa Indonesia untuk Fotografi]" },
+                video: { title: "B2. Videografi", content: "[Konten Bahasa Indonesia untuk Videografi]" },
+                decor: { title: "B3. Florist, Dekorasi & Furnitur", content: "[Konten Bahasa Indonesia untuk Dekorasi]" },
+                catering: { title: "B4. Katering & Bar", content: "[Konten Bahasa Indonesia untuk Katering]" },
+                entertainment: { title: "B5. Hiburan (Musisi, Penari, MC, dll.)", content: "[Konten Bahasa Indonesia untuk Hiburan]" },
+                makeup: { title: "B6. Rias Wajah & Rambut", content: "[Konten Bahasa Indonesia untuk Rias Wajah]" },
+                transport: { title: "B7. Transportasi", content: "[Konten Bahasa Indonesia untuk Transportasi]" },
+            },
+            sectionC: {
+                title: "Bagian C: Pemesanan & Pembayaran",
+                li1: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li2: "<strong>[Teks Bahasa Indonesia]</strong>",
+                li3: "<strong>[Teks Bahasa Indonesia]</strong>"
+            },
+            thankYou: "[Teks Bahasa Indonesia untuk ucapan terima kasih.]"
+        },
+        login: {
+            title: "Login Pusat Tim",
+            passwordLabel: "Kata Sandi",
+            error: "Kata sandi salah. Silakan coba lagi.",
+            button: "Masuk"
+        },
+        teamHub: {
+            title: "Pusat Tim Internal",
+            pm: { 
+                title: "SOP: Manajer Proyek", 
+                content: "[Konten LENGKAP Bahasa Indonesia untuk SOP Manajer Proyek akan dimasukkan di sini.]"
+            },
+            sales: { title: "SOP: Manajer Penjualan", content: "<div class='text-center'><img src='https://placehold.co/100x100/e2e8f0/94a3b8?text=Segera+Hadir' alt='Segera Hadir' class='h-16 w-auto mx-auto mb-4 opacity-50'><p class='italic text-slate-500'>Konten untuk SOP Manajer Penjualan akan ditambahkan di pembaruan mendatang. Harap berikan teks final untuk dimasukkan di sini.</p></div>" },
+            finance: { title: "SOP: Keuangan", content: "<div class='text-center'><img src='https://placehold.co/100x100/e2e8f0/94a3b8?text=Segera+Hadir' alt='Segera Hadir' class='h-16 w-auto mx-auto mb-4 opacity-50'><p class='italic text-slate-500'>Konten untuk SOP Keuangan akan ditambahkan di pembaruan mendatang. Harap berikan teks final untuk dimasukkan di sini.</p></div>" }
+        }
+    }
+};
+
+// --- APPLICATION LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    const mainContent = document.getElementById('main-content');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const langSwitcher = document.getElementById('lang-switcher');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    let currentLang = localStorage.getItem('sopLang') || 'en';
+    let teamHubUnlocked = sessionStorage.getItem('teamHubUnlocked') === 'true';
+
+    // --- Page Navigation (PRIORITY 8: Hash-based) ---
+    function navigateTo(pageId, fromHistory = false) {
+        if (pageId.startsWith('#')) {
+            pageId = pageId.substring(1);
+        }
+        
+        if (pageId === 'team-hub' && !teamHubUnlocked) {
+            pageId = 'login';
+        } else if (pageId === 'login' && teamHubUnlocked) {
+            pageId = 'team-hub';
+        }
+
+        mainContent.innerHTML = ''; // Clear content
+        const template = document.getElementById(`template-${pageId}`);
+        if (template) {
+            const clone = template.content.cloneNode(true);
+            mainContent.appendChild(clone);
+            
+            if (!fromHistory) {
+                 window.location.hash = pageId;
+            }
+            updateActiveNavLink(pageId);
+            updateLanguage();
+            
+            if (pageId === 'vendor-portal') setupAccordion();
+            if (pageId === 'login') setupLoginForm();
+        }
+        mobileMenu.classList.add('hidden');
+        mobileMenuOverlay.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    function updateActiveNavLink(pageId) {
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').substring(1);
+            if (linkPage === pageId || (pageId === 'login' && linkPage === 'login') || (pageId === 'team-hub' && linkPage === 'login')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+    
+    window.addEventListener('hashchange', () => navigateTo(window.location.hash, true));
+
+    // --- Language Switching (PRIORITY 8: localStorage) ---
+    function switchLanguage() {
+        currentLang = currentLang === 'en' ? 'id' : 'en';
+        localStorage.setItem('sopLang', currentLang);
+        updateLanguage();
+    }
+
+    function updateLanguage() {
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.dataset.langKey;
+            const translation = getTranslation(key);
+            if (translation) el.innerHTML = translation;
+        });
+        
+        const flagEn = document.getElementById('flag-en');
+        const flagId = document.getElementById('flag-id');
+        if(flagEn && flagId){
+            flagEn.classList.toggle('hidden', currentLang !== 'en');
+            flagId.classList.toggle('hidden', currentLang !== 'id');
+        }
+
+        if (document.getElementById('accordion-container')) setupAccordion();
+    }
+
+    function getTranslation(key) {
+        const keys = key.split('.');
+        let result = translations[currentLang];
+        for (const k of keys) {
+            result = result[k];
+            if (typeof result === 'undefined') return null;
+        }
+        return result;
+    }
+
+    function getVendorIcon(key) {
+        const icons = {
+            photo: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>`,
+            video: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0013.5 5.25h-9A2.25 2.25 0 002.25 7.5v9A2.25 2.25 0 004.5 18.75z" /></svg>`,
+            decor: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 12l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 18l-1.035.259a3.375 3.375 0 00-2.456 2.456L18 21.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 18l1.035-.259a3.375 3.375 0 002.456-2.456L18 12z" /></svg>`,
+            catering: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1014.625 7.5H9.375A2.625 2.625 0 1012 4.875z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75v6.75" /></svg>`,
+            entertainment: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V7.5A2.25 2.25 0 0013.5 5.25h-3A2.25 2.25 0 008.25 7.5v3.75c0 .621.504 1.125 1.125 1.125h3.75A1.125 1.125 0 0114.25 15v-3.75" /></svg>`,
+            makeup: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.96 14.96 0 00-5.84-2.56m0 0a14.956 14.956 0 01-5.84-2.56m5.84 2.56v4.82" /></svg>`,
+            transport: `<svg class="h-5 w-5 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.293-2.293A1 1 0 016.586 13H13zM19 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.293-2.293A1 1 0 016.586 13H19z" /></svg>`
+        };
+        return icons[key] || '';
+    }
+
+    // --- Accordion Enhancement (PRIORITY 3) ---
+    function setupAccordion() {
+        const container = document.getElementById('accordion-container');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        const vendorKeys = Object.keys(translations.en.part3.sectionB).filter(k => k !== 'title' && k !== 'p1');
+
+        vendorKeys.forEach(key => {
+            const title = getTranslation(`part3.sectionB.${key}.title`);
+            const contentHTML = getTranslation(`part3.sectionB.${key}.content`);
+            const div = document.createElement('div');
+            div.className = 'border border-slate-200 rounded-md overflow-hidden';
+            div.innerHTML = `
+                <div class="accordion-header flex justify-between items-center p-4 bg-white hover:bg-slate-50 transition duration-150 ease-in-out" aria-expanded="false">
+                    <div class="flex items-center">
+                        ${getVendorIcon(key)}
+                        <h3 class="font-semibold text-slate-800">${title}</h3>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="p-4 border-t border-slate-200">${contentHTML}</div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        container.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('svg');
+                const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+                // Close all others
+                container.querySelectorAll('.accordion-header').forEach(h => {
+                    if (h !== header) {
+                        h.setAttribute('aria-expanded', 'false');
+                        h.nextElementSibling.style.maxHeight = null;
+                        h.querySelector('svg').classList.remove('rotate-180');
+                    }
+                });
+                
+                if (isExpanded) {
+                    header.setAttribute('aria-expanded', 'false');
+                    content.style.maxHeight = null;
+                    icon.classList.remove('rotate-180');
+                } else {
+                    header.setAttribute('aria-expanded', 'true');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.classList.add('rotate-180');
+                    setTimeout(() => {
+                         header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300); // Delay scroll to allow animation to start
+                }
+            });
+        });
+    }
+
+    // --- Team Hub Login (FIXED for Local Testing) ---
+    function setupLoginForm() {
+        const form = document.getElementById('login-form');
+        if (form) {
+            // NOTE: This is a simple, insecure, client-side password check for local testing.
+            // For a live production website, you MUST use a secure backend method (like the PHP example).
+            const teamHubPassword = "7A_SOP_2025"; 
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const passwordInput = document.getElementById('password');
+                const errorMsg = document.getElementById('login-error');
+                
+                if (passwordInput.value === teamHubPassword) {
+                    teamHubUnlocked = true;
+                    sessionStorage.setItem('teamHubUnlocked', 'true'); // Keep user logged in for the session
+                    navigateTo('team-hub');
+                } else {
+                    errorMsg.classList.remove('hidden');
+                    passwordInput.value = '';
+                }
+            });
+        }
+    }
+
+    // --- Mobile Menu (PRIORITY 2) ---
+    function toggleMobileMenu() {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuOverlay.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden', !isHidden);
+    }
+    
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+
+    // --- Event Listeners ---
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateTo(link.getAttribute('href'));
+        });
+    });
+
+    langSwitcher.addEventListener('click', switchLanguage);
+
+    // --- Initial Load ---
+    const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
+    navigateTo(initialPage, true);
+});
+</script>
+
+</body>
+</html>
