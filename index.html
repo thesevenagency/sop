@@ -9,8 +9,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>7️⃣</text></svg>">
 
     <!-- Preload fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"></noscript>
 
     <!-- Using Tailwind CDN for simplicity and immediate functionality. -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,10 +23,21 @@
         body.overflow-hidden {
             overflow: hidden;
         }
+        /* NEW STYLE: Decorative underline for section titles */
         .section-title {
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem; /* 12px */
+            margin-bottom: 1.5rem; /* 24px */
+            border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Sits on top of the border */
+            left: 0;
+            width: 50px; /* Width of the decorative line */
+            height: 3px; /* Thickness of the line */
+            background-color: #4f46e5; /* indigo-600 */
         }
         .accordion-header {
             cursor: pointer;
@@ -118,24 +129,25 @@
         <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
             <!-- Home Page Banner -->
             <img src="https://placehold.co/1200x300/e0e7ff/4f46e5?text=Welcome+to+Our+SOP+Portal" alt="SOP Portal Welcome Banner" class="w-full h-48 object-cover mb-6 rounded-lg">
-            <h1 class="text-3xl font-bold text-slate-800 mb-4" data-lang-key="home.title">Welcome to the 7.agency SOP Portal</h1>
-            <p class="mb-4" data-lang-key="home.p1">This portal provides access to our Standard Operating Procedures (SOPs) for all internal team members and external vendor partners. Our goal is to ensure consistency, quality, and professionalism across all events.</p>
-            <p data-lang-key="home.p2">Please use the navigation above to find the section relevant to you. The Core Principles apply to everyone.</p>
+            <!-- NEW STYLE: Uppercase, bold heading -->
+            <h1 class="text-3xl font-extrabold text-slate-800 mb-4 uppercase tracking-wide" data-lang-key="home.title">Welcome to the 7.agency SOP Portal</h1>
+            <p class="mb-4 text-lg text-slate-600" data-lang-key="home.p1">This portal provides access to our Standard Operating Procedures (SOPs) for all internal team members and external vendor partners. Our goal is to ensure consistency, quality, and professionalism across all events.</p>
+            <p class="text-slate-500" data-lang-key="home.p2">Please use the navigation above to find the section relevant to you. The Core Principles apply to everyone.</p>
         </div>
     </template>
 
     <template id="template-core-principles">
         <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
-            <h1 class="text-3xl font-bold text-slate-800 mb-2" data-lang-key="part1.title">Part 1: The Core Principles Handbook</h1>
+            <h1 class="text-3xl font-extrabold text-slate-800 mb-2 uppercase tracking-wide" data-lang-key="part1.title">Part 1: The Core Principles Handbook</h1>
             <p class="text-sm text-slate-500 mb-6" data-lang-key="part1.version">Version 1.0 | Last Updated: 1 July 2025</p>
             
-            <div class="space-y-6">
+            <div class="space-y-8">
                 <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section1.title">1. The Client Promise: Our Guiding Star</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part1.section1.title">1. The Client Promise: Our Guiding Star</h2>
                     <p data-lang-key="part1.section1.p1">Everything we do is centered around creating a perfect, seamless, and unforgettable wedding day for our clients. The Project Manager (PM) is the lead coordinator, responsible for every detail and for solving any issue that may arise. Our collective goal is to work together as a single, coordinated team to flawlessly execute the client's vision.</p>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section2.title">2. Universal Code of Conduct</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part1.section2.title">2. Universal Code of Conduct</h2>
                     <p class="mb-4" data-lang-key="part1.section2.p1">These principles are the minimum standard of behavior and presentation expected from every individual on-site.</p>
                     <div class="space-y-4 ml-4">
                         <div>
@@ -166,7 +178,7 @@
                     </div>
                 </div>
                  <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section3.title">3. Handling On-Site Challenges</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part1.section3.title">3. Handling On-Site Challenges</h2>
                     <p class="mb-2" data-lang-key="part1.section3.p1">Non-standard situations can occur. When they do, we respond with calm professionalism.</p>
                     <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
                         <li data-lang-key="part1.section3.li1"><strong>Your First Responsibility:</strong> Your primary contact for any problem, question, or deviation from the plan is the <strong>Project Manager (PM)</strong>.</li>
@@ -174,7 +186,7 @@
                     </ul>
                 </div>
                  <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part1.section4.title">4. Our Commitment to Quality</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part1.section4.title">4. Our Commitment to Quality</h2>
                     <p class="mb-2" data-lang-key="part1.section4.p1">These principles are the foundation of our reputation. They are not optional.</p>
                     <ul class="list-disc list-outside ml-5 mt-2 space-y-1">
                         <li data-lang-key="part1.section4.li1"><strong>Accountability:</strong> Every team member and vendor partner is held accountable for upholding these standards.</li>
@@ -188,14 +200,14 @@
 
     <template id="template-vendor-portal">
         <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
-            <h1 class="text-3xl font-bold text-slate-800 mb-2" data-lang-key="part3.title">Part 3: The 7.agency Vendor Partnership Guide</h1>
+            <h1 class="text-3xl font-extrabold text-slate-800 mb-2 uppercase tracking-wide" data-lang-key="part3.title">Part 3: The 7.agency Vendor Partnership Guide</h1>
             <p class="text-sm text-slate-500 mb-6" data-lang-key="part3.version">Version 1.3 | Last Updated: 1 July 2025</p>
             
             <p class="mb-6" data-lang-key="part3.intro">Welcome, and thank you for partnering with 7.agency. We consider our vendors to be an essential part of our team, crucial to creating the perfect, seamless, and unforgettable events our clients expect. This guide outlines our quality standards and on-site procedures. Your adherence to these guidelines ensures a smooth collaboration and a flawless event for our mutual client.</p>
 
             <div class="space-y-8">
                 <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionA.title">Section A: Universal Standards of Partnership</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part3.sectionA.title">Section A: Universal Standards of Partnership</h2>
                     <p class="mb-4" data-lang-key="part3.sectionA.p1">These core principles are the foundation of our work and are mandatory for every person on-site.</p>
                     <ul class="list-decimal list-outside ml-5 space-y-2">
                         <li data-lang-key="part3.sectionA.li1"><strong>The Client-First Principle:</strong> Our collective goal is to execute the client's vision perfectly. We work as one unified team, led by the 7.agency Project Manager (PM), who is the final authority on-site.</li>
@@ -212,7 +224,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionB.title">Section B: Service-Specific Quality Standards</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part3.sectionB.title">Section B: Service-Specific Quality Standards</h2>
                     <p class="mb-4" data-lang-key="part3.sectionB.p1">Please find the detailed requirements for your specific service area below.</p>
                     <div class="space-y-2" id="accordion-container">
                         <!-- Accordion items will be injected here -->
@@ -220,7 +232,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title" data-lang-key="part3.sectionC.title">Section C: Booking & Payment</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 section-title uppercase" data-lang-key="part3.sectionC.title">Section C: Booking & Payment</h2>
                     <ul class="list-disc list-outside ml-5 space-y-2">
                         <li data-lang-key="part3.sectionC.li1"><strong>Booking:</strong> All official bookings and changes will be communicated in writing from our `7agency.bookings@gmail.com` email address.</li>
                         <li data-lang-key="part3.sectionC.li2"><strong>Payment:</strong> All payments are processed via invoice. After the event, please submit an invoice for your services. Our Finance Manager will process the payment, which will be issued on the next business day after the event or upon receipt of the invoice.</li>
@@ -254,11 +266,11 @@
 
     <template id="template-team-hub">
          <div class="page bg-white p-6 sm:p-8 rounded-lg shadow-sm">
-            <h1 class="text-3xl font-bold text-slate-800 mb-6" data-lang-key="teamHub.title">Internal Team Hub</h1>
+            <h1 class="text-3xl font-extrabold text-slate-800 mb-6 uppercase tracking-wide" data-lang-key="teamHub.title">Internal Team Hub</h1>
             
             <div class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
-                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
+                <h2 class="text-2xl font-bold text-slate-800 section-title uppercase flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
                     <span data-lang-key="teamHub.pm.title">SOP: Project Managers</span>
                 </h2>
                 <div class="space-y-6 text-slate-600 leading-relaxed" data-lang-key="teamHub.pm.content">
@@ -267,8 +279,8 @@
             </div>
 
             <div class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
-                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.96 14.96 0 00-5.84-2.56m0 0a14.956 14.956 0 01-5.84-2.56m5.84 2.56v4.82" /></svg>
+                <h2 class="text-2xl font-bold text-slate-800 section-title uppercase flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.96 14.96 0 00-5.84-2.56m0 0a14.956 14.956 0 01-5.84-2.56m5.84 2.56v4.82" /></svg>
                     <span data-lang-key="teamHub.sales.title">SOP: Sales Managers</span>
                 </h2>
                 <div class="p-6 bg-slate-50 rounded-md text-center" data-lang-key="teamHub.sales.content">
@@ -277,8 +289,8 @@
             </div>
 
             <div>
-                <h2 class="text-2xl font-semibold text-slate-800 mb-3 section-title flex items-center">
-                    <svg class="h-6 w-6 mr-3 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
+                <h2 class="text-2xl font-bold text-slate-800 section-title uppercase flex items-center">
+                    <svg class="h-6 w-6 mr-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
                     <span data-lang-key="teamHub.finance.title">SOP: Finance</span>
                 </h2>
                 <div class="p-6 bg-slate-50 rounded-md text-center" data-lang-key="teamHub.finance.content">
